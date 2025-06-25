@@ -1,0 +1,32 @@
+services:
+  db:
+    image: 'postgres:17.5-alpine3.22'
+    env_file: '.env'
+
+    ports:
+      - 5432:5432
+
+    volumes:
+      - ./volumes/data:/var/lib/postgresql/data
+      - ./volumes/init:/docker-entrypoint-initdb.d:ro
+
+    networks:
+      llnet:
+        ipv4_address: 10.42.73.11
+
+    restart: always
+
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "${POSTGRES_USER}"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+
+
+# Use postgres/example user/password credentials
+
+networks:
+  llnet:
+    name: lalanet
+    external: true
+
