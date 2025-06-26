@@ -23,8 +23,6 @@ services:
       retries: 5
 
 
-# Use postgres/example user/password credentials
-
 networks:
   llnet:
     name: lalanet
