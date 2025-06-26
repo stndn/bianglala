@@ -1,0 +1,33 @@
+# We use Redis 7.2, although the licensing change should not have impact here.
+# For the license change and relevant information, visit:
+# * https://redis.io/blog/redis-adopts-dual-source-available-licensing/
+# * https://redis.io/legal/licenses/
+
+services:
+  redis:
+    image: redis:7.2.9-alpine3.21
+
+    expose:
+      - 6379
+
+    volumes:
+      - ./volumes/data:/data
+
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 30s
+      retries: 50
+      start_period: 30s
+
+    restart: always
+
+    networks:
+      llnet:
+        ipv4_address: 10.42.73.12
+
+networks:
+  llnet:
+    name: lalanet
+    external: true
+
