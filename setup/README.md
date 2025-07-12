@@ -12,6 +12,9 @@ To create the Docker network:
 docker network create -d bridge --subnet 10.42.73.0/24 --gateway 10.42.73.1 lalanet
 ```
 
+If you use a different name and/or subnet for your Docker network, ensure that the network-related settings in each component's `compose.yaml` file are adjusted to match the network that you created.
+
+
 ## Extras
 
 If you prefer to work on files directly within the server, I recommend my [custom vim configuration][url-github-kkjjhlhlba].
