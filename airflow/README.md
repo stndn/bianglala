@@ -1,6 +1,6 @@
 # Airflow
 
-Docker image: [apache/airflow:slim-3.0.2-python3.12][url-apache-airflow-dockerhub].
+Docker image: [apache/airflow:slim-3.0.3-python3.12][url-apache-airflow-dockerhub].
 
 
 ### Preparations
@@ -28,7 +28,7 @@ The [`compose.yaml`][repo-compose-yaml] is adapted from [Apache Airflow docker-c
 
 
 <!-- Links -->
-[url-apache-airflow-dockerhub]: https://hub.docker.com/r/apache/airflow/tags?name=slim-3.0.2-python3.12
+[url-apache-airflow-dockerhub]: https://hub.docker.com/r/apache/airflow/tags?name=slim-3.0.3-python3.12
 [url-apache-airflow-docker-compose-yaml]: https://airflow.apache.org/docs/apache-airflow/stable/howto/docker-compose/index.html#fetching-docker-compose-yaml
 [repo-compose-yaml]: compose.yaml
 [repo-dot-env-sample]: .env.sample
