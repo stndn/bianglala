@@ -1,0 +1,37 @@
+services:
+  metabase:
+    image: metabase/metabase:v0.55.10.4
+    container_name: metabase
+
+    environment:
+      MB_DB_TYPE: ${MB_DB_TYPE}
+      MB_DB_DBNAME: ${MB_DB_DBNAME}
+      MB_DB_PORT: ${MB_DB_PORT}
+      MB_DB_USER: ${MB_DB_USER}
+      MB_DB_PASS: ${MB_DB_PASS}
+      MB_DB_HOST: ${MB_DB_HOST}
+      MB_ENCRYPTION_SECRET_KEY: ${MB_ENCRYPTION_SECRET_KEY} # Ref: https://www.metabase.com/docs/latest/databases/encrypting-details-at-rest
+
+    hostname: metabase
+    ports:
+      - 3000:3000
+
+    volumes:
+      - /dev/urandom:/dev/random:ro
+
+    healthcheck:
+      test: curl --fail -I http://localhost:3000/api/health || exit 1
+      interval: 15s
+      timeout: 5s
+      retries: 5
+
+    restart: always
+
+    networks:
+      llnet:
+        ipv4_address: 10.42.73.31
+
+networks:
+  llnet:
+    name: lalanet
+    external: true
